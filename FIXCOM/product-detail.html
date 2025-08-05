@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto - FixCom</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .card {
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+        .product-detail-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 2rem auto; /* Center the image and add bottom margin */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section (simple for detail pages) -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 flex items-center justify-between card">
+        <div class="flex items-center space-x-4">
+            <img src="https://placehold.co/100x100/3b82f6/ffffff?text=FixCom" alt="Logo FixCom" class="w-16 h-auto">
+            <h1 class="text-2xl font-bold text-gray-800">FixCom</h1>
+        </div>
+        <!-- Button to go back to products section -->
+        <button onclick="history.back();" class="btn-primary">Volver a Productos</button>
+    </header>
+
+    <!-- Product Detail Section -->
+    <section class="py-16 px-6 md:px-12 bg-white card mt-8 max-w-6xl mx-auto">
+        <div id="product-content">
+            <p class="text-center text-gray-600 text-lg">Cargando detalles del producto...</p>
+        </div>
+    </section>
+
+    <!-- Footer Section (simple for detail pages) -->
+    <footer class="bg-gray-800 text-white py-8 px-6 md:px-12 mt-8 rounded-t-xl">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-sm">&copy; 2025 FixCom. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data de productos (debe coincidir con la de index.html)
+        const productsData = [
+            // Periféricos (10 productos)
+            { id: 1, name: "Mouse Inalámbrico Ergonómico", category: "Periféricos", basePrice: 35000, image: "https://placehold.co/400x250/FFC0CB/000000?text=Mouse+Inalambrico", description: "Un mouse cómodo y preciso, ideal para largas horas de trabajo o estudio. Conexión inalámbrica estable y diseño ergonómico para reducir la fatiga." },
+            { id: 2, name: "Teclado Mecánico RGB", category: "Periféricos", basePrice: 92000, image: "https://placehold.co/400x250/ADD8E6/000000?text=Teclado+Mecanico", description: "Experimenta la respuesta táctil y sonora de un teclado mecánico. Iluminación RGB personalizable y durabilidad para gamers y profesionales." },
+            { id: 3, name: "Webcam Full HD 1080p", category: "Periféricos", basePrice: 61500, image: "https://placehold.co/400x250/90EE90/000000?text=Webcam+HD", description: "Calidad de video nítida en Full HD para tus videollamadas, clases en línea o transmisiones en vivo. Micrófono integrado y fácil instalación." },
+            { id: 4, name: "Auriculares Gaming con Micrófono", category: "Periféricos", basePrice: 75000, image: "https://placehold.co/400x250/FFB6C1/000000?text=Auriculares+Gaming", description: "Sumérgete en el juego con sonido envolvente y un micrófono claro para comunicarte con tu equipo. Diseño cómodo para largas sesiones de juego." },
+            { id: 5, name: "Monitor LED 24 pulgadas Full HD", category: "Periféricos", basePrice: 450000, image: "https://placehold.co/400x250/B0E0E6/000000?text=Monitor+24", description: "Disfruta de imágenes vibrantes y claras con este monitor Full HD de 24 pulgadas. Ideal para trabajo, estudio o entretenimiento." },
+            { id: 6, name: "Impresora Multifuncional Inkjet", category: "Periféricos", basePrice: 280000, image: "https://placehold.co/400x250/DDA0DD/000000?text=Impresora", description: "Imprime, escanea y copia con facilidad. Ideal para el hogar o pequeñas oficinas, con conectividad inalámbrica." },
+            { id: 7, name: "Disco Duro Externo 1TB USB 3.0", category: "Periféricos", basePrice: 180000, image: "https://placehold.co/400x250/E6E6FA/000000?text=HDD+Externo", description: "Expande el almacenamiento de tu PC o laptop con este disco duro externo de 1TB. Transferencias rápidas con USB 3.0." },
+            { id: 8, name: "Memoria USB 64GB", category: "Periféricos", basePrice: 25000, image: "https://placehold.co/400x250/FFE4E1/000000?text=USB+64GB", description: "Almacena y transporta tus archivos importantes con esta memoria USB de 64GB. Compacta y confiable." },
+            { id: 9, name: "Altavoces Bluetooth Portátiles", category: "Periféricos", basePrice: 55000, image: "https://placehold.co/400x250/AFEEEE/000000?text=Altavoces+BT", description: "Lleva tu música a todas partes con estos altavoces Bluetooth. Sonido claro y batería de larga duración." },
+            { id: 10, name: "Tableta Gráfica Digital", category: "Periféricos", basePrice: 150000, image: "https://placehold.co/400x250/F0F8FF/000000?text=Tableta+Grafica", description: "Ideal para artistas digitales, diseñadores o para tomar notas. Sensibilidad a la presión y compatibilidad con software de diseño." },
+
+            // Redes (10 productos)
+            { id: 11, name: "Router WiFi 6 de Doble Banda", category: "Redes", basePrice: 192000, image: "https://placehold.co/400x250/FFD700/000000?text=Router+WiFi6", description: "Experimenta velocidades de internet ultrarrápidas y una conexión más estable con la última tecnología WiFi 6." },
+            { id: 12, name: "Extensor de Rango WiFi", category: "Redes", basePrice: 70000, image: "https://placehold.co/400x250/DAA520/000000?text=Extensor+WiFi", description: "Elimina las zonas muertas de WiFi en tu hogar, extendiendo la cobertura a cada rincón." },
+            { id: 13, name: "Adaptador USB WiFi de Alta Ganancia", category: "Redes", basePrice: 45000, image: "https://placehold.co/400x250/FFC107/000000?text=Adaptador+WiFi", description: "Mejora la recepción de señal WiFi de tu computador portátil o de escritorio con este potente adaptador USB." },
+            { id: 14, name: "Cable Ethernet Cat6 (10 metros)", category: "Redes", basePrice: 20000, image: "https://placehold.co/400x250/FF8C00/000000?text=Cable+Ethernet", description: "Conexión a internet por cable de alta velocidad y estabilidad, ideal para gaming y streaming 4K." },
+            { id: 15, name: "Sistema WiFi Mesh (2 unidades)", category: "Redes", basePrice: 550000, image: "https://placehold.co/400x250/FFA07A/000000?text=WiFi+Mesh", description: "Crea una red WiFi unificada y potente en toda tu casa, eliminando interrupciones y optimizando la señal." },
+            { id: 16, name: "Switch de Red 8 Puertos Gigabit", category: "Redes", basePrice: 110000, image: "https://placehold.co/400x250/FF7F50/000000?text=Switch+Red", description: "Expande tu red cableada con 8 puertos Gigabit Ethernet, perfecto para conectar múltiples dispositivos." },
+            { id: 17, name: "Cámara IP de Vigilancia WiFi", category: "Redes", basePrice: 130000, image: "https://placehold.co/400x250/FF6347/000000?text=Camara+IP", description: "Monitorea tu hogar o negocio desde cualquier lugar con esta cámara IP con conectividad WiFi." },
+            { id: 18, name: "Antena WiFi Exterior", category: "Redes", basePrice: 90000, image: "https://placehold.co/400x250/CD5C5C/000000?text=Antena+WiFi", description: "Mejora la señal WiFi en exteriores o conecta dispositivos a larga distancia con esta antena de alta potencia." },
+            { id: 19, name: "Powerline Adapter Kit", category: "Redes", basePrice: 160000, image: "https://placehold.co/400x250/DC143C/000000?text=Powerline", description: "Extiende tu red a través de la instalación eléctrica de tu hogar, ideal para lugares donde el WiFi no llega bien." },
+            { id: 20, name: "Servidor NAS Personal (2 Bahías)", category: "Redes", basePrice: 700000, image: "https://placehold.co/400x250/B22222/000000?text=Servidor+NAS", description: "Crea tu propia nube personal para almacenar y acceder a tus archivos desde cualquier lugar." },
+
+            // Almacenamiento (10 productos)
+            { id: 21, name: "SSD Interno 500GB NVMe", category: "Almacenamiento", basePrice: 280000, image: "https://placehold.co/400x250/4682B4/000000?text=SSD+NVMe", description: "Mejora drásticamente la velocidad de tu computador con este SSD NVMe ultrarrápido de 500GB." },
+            { id: 22, name: "Disco Duro Interno 2TB HDD", category: "Almacenamiento", basePrice: 190000, image: "https://placehold.co/400x250/5F9EA0/000000?text=HDD+2TB", description: "Gran capacidad de almacenamiento de 2TB para todos tus archivos, fotos y videos." },
+            { id: 23, name: "Tarjeta MicroSD 128GB Clase 10", category: "Almacenamiento", basePrice: 50000, image: "https://placehold.co/400x250/6A5ACD/000000?text=MicroSD+128GB", description: "Expande el almacenamiento de tu smartphone, tablet o cámara con esta tarjeta de alta velocidad." },
+            { id: 24, name: "Carcasa Externa para SSD/HDD 2.5''", category: "Almacenamiento", basePrice: 30000, image: "https://placehold.co/400x250/7B68EE/000000?text=Carcasa+Externa", description: "Convierte cualquier disco duro interno de 2.5 pulgadas en una unidad de almacenamiento portátil." },
+            { id: 25, name: "Pendrive USB 3.0 128GB", category: "Almacenamiento", basePrice: 40000, image: "https://placehold.co/400x250/8A2BE2/000000?text=Pendrive+128GB", description: "Unidad flash USB de alta capacidad y velocidad para transferir archivos rápidamente." },
+            { id: 26, name: "SSD Portátil 1TB USB-C", category: "Almacenamiento", basePrice: 500000, image: "https://placehold.co/400x250/9370DB/000000?text=SSD+Portatil", description: "Almacenamiento externo ultrarrápido y compacto de 1TB con conexión USB-C." },
+            { id: 27, name: "Lector de Tarjetas Multi-Formato", category: "Almacenamiento", basePrice: 20000, image: "https://placehold.co/400x250/BA55D3/000000?text=Lector+Tarjetas", description: "Compatible con múltiples formatos de tarjetas de memoria, ideal para fotógrafos y videógrafos." },
+            { id: 28, name: "Unidad de DVD Externa USB", category: "Almacenamiento", basePrice: 90000, image: "https://placehold.co/400x250/DA70D6/000000?text=DVD+Externo", description: "Reproduce y graba CDs y DVDs en computadores sin unidad óptica, con conexión USB." },
+            { id: 29, name: "Memoria RAM DDR4 8GB (para PC)", category: "Almacenamiento", basePrice: 150000, image: "https://placehold.co/400x250/C71585/000000?text=RAM+8GB", description: "Aumenta la capacidad de multitarea y el rendimiento general de tu PC de escritorio." },
+            { id: 30, name: "Memoria RAM DDR4 16GB (para Laptop)", category: "Almacenamiento", basePrice: 250000, image: "https://placehold.co/400x250/FF1493/000000?text=RAM+16GB+Laptop", description: "Mejora significativamente el rendimiento de tu laptop con 16GB de memoria RAM DDR4." },
+
+            // Componentes de PC (10 productos)
+            { id: 31, name: "Procesador Intel Core i5 (última gen)", category: "Componentes de PC", basePrice: 900000, image: "https://placehold.co/400x250/00BFFF/000000?text=Intel+i5", description: "Potente procesador Intel Core i5 de última generación para un rendimiento multitarea y gaming fluido." },
+            { id: 32, name: "Procesador AMD Ryzen 5 (última gen)", category: "Componentes de PC", basePrice: 850000, image: "https://placehold.co/400x250/87CEFA/000000?text=Ryzen+5", description: "Procesador AMD Ryzen 5 de última generación, ideal para creadores de contenido y gamers." },
+            { id: 33, name: "Tarjeta Gráfica NVIDIA GeForce RTX 3060", category: "Componentes de PC", basePrice: 1800000, image: "https://placehold.co/400x250/4682B4/000000?text=RTX+3060", description: "Experimenta gráficos impresionantes y rendimiento de juego de alta gama con la RTX 3060." },
+            { id: 34, name: "Placa Madre ATX Intel Chipset", category: "Componentes de PC", basePrice: 400000, image: "https://placehold.co/400x250/6A5ACD/000000?text=Placa+Madre+Intel", description: "Placa madre ATX compatible con procesadores Intel, ideal para construir o actualizar tu PC." },
+            { id: 35, name: "Placa Madre ATX AMD Chipset", category: "Componentes de PC", basePrice: 380000, image: "https://placehold.co/400x250/483D8B/000000?text=Placa+Madre+AMD", description: "Placa madre ATX compatible con procesadores AMD, perfecta para ensamblar un sistema potente." },
+            { id: 36, name: "Fuente de Poder 650W 80 Plus Bronze", category: "Componentes de PC", basePrice: 200000, image: "https://placehold.co/400x250/191970/000000?text=Fuente+Poder", description: "Fuente de poder eficiente y confiable de 650W, certificada 80 Plus Bronze para un consumo óptimo." },
+            { id: 37, name: "Refrigeración Líquida CPU AIO 240mm", category: "Componentes de PC", basePrice: 300000, image: "https://placehold.co/400x250/000080/FFFFFF?text=Refrigeracion+Liquida", description: "Mantén tu CPU a temperaturas óptimas con este sistema de refrigeración líquida todo en uno de 240mm." },
+            { id: 38, name: "Gabinete Mid-Tower con Ventana", category: "Componentes de PC", basePrice: 150000, image: "https://placehold.co/400x250/20B2AA/000000?text=Gabinete+PC", description: "Gabinete moderno Mid-Tower con ventana lateral para lucir tus componentes y excelente flujo de aire." },
+            { id: 39, name: "Ventilador de Gabinete RGB 120mm", category: "Componentes de PC", basePrice: 30000, image: "https://placehold.co/400x250/008B8B/000000?text=Ventilador+RGB", description: "Añade estilo y mejora la ventilación de tu PC con este ventilador RGB de 120mm." },
+            { id: 40, name: "Pasta Térmica de Alto Rendimiento", category: "Componentes de PC", basePrice: 15000, image: "https://placehold.co/400x250/00CED1/000000?text=Pasta+Termica", description: "Mejora la transferencia de calor entre tu CPU/GPU y el disipador para un rendimiento óptimo." },
+
+            // Smart Home (10 productos)
+            { id: 41, name: "Bombillo Inteligente RGB Wi-Fi", category: "Smart Home", basePrice: 40000, image: "https://placehold.co/400x250/98FB98/000000?text=Bombillo+Smart", description: "Controla la iluminación de tu hogar desde tu smartphone, con millones de colores y escenas personalizables." },
+            { id: 42, name: "Enchufe Inteligente Wi-Fi con Monitor de Energía", category: "Smart Home", basePrice: 35000, image: "https://placehold.co/400x250/ADFF2F/000000?text=Enchufe+Smart", description: "Convierte cualquier electrodoméstico en inteligente y monitorea su consumo de energía desde tu app." },
+            { id: 43, name: "Cerradura Inteligente con Huella Digital", category: "Smart Home", basePrice: 400000, image: "https://placehold.co/400x250/7CFC00/000000?text=Cerradura+Smart", description: "Abre tu puerta con tu huella, código, tarjeta o smartphone. Mayor seguridad y comodidad para tu hogar." },
+            { id: 44, name: "Sensor de Movimiento Inteligente", category: "Smart Home", basePrice: 25000, image: "https://placehold.co/400x250/32CD32/000000?text=Sensor+Movimiento", description: "Detecta movimiento en tu hogar y recibe alertas en tu teléfono, o úsalo para automatizar luces." },
+            { id: 45, name: "Termostato Inteligente Programable", category: "Smart Home", basePrice: 180000, image: "https://placehold.co/400x250/228B22/000000?text=Termostato+Smart", description: "Controla la temperatura de tu hogar de forma inteligente, ahorrando energía y maximizando el confort." },
+            { id: 46, name: "Timbre Inteligente con Cámara", category: "Smart Home", basePrice: 250000, image: "https://placehold.co/400x250/006400/000000?text=Timbre+Smart", description: "Ve y habla con quien esté en tu puerta desde cualquier lugar, con detección de movimiento y visión nocturna." },
+            { id: 47, name: "Control Remoto Universal Inteligente IR/RF", category: "Smart Home", basePrice: 60000, image: "https://placehold.co/400x250/556B2F/000000?text=Control+Universal", description: "Unifica todos tus controles remotos en una sola aplicación y controla tus dispositivos IR/RF." },
+            { id: 48, name: "Aspiradora Robot Inteligente", category: "Smart Home", basePrice: 800000, image: "https://placehold.co/400x250/6B8E23/000000?text=Aspiradora+Robot", description: "Mantén tu hogar limpio sin esfuerzo. Programa la limpieza y controla tu aspiradora robot desde tu smartphone." },
+            { id: 49, name: "Sistema de Riego Inteligente", category: "Smart Home", basePrice: 150000, image: "https://placehold.co/400x250/8FBC8F/000000?text=Riego+Smart", description: "Optimiza el riego de tu jardín según el clima y las necesidades de tus plantas, ahorrando agua." },
+            { id: 50, name: "Cortinas Inteligentes Motorizadas", category: "Smart Home", basePrice: 350000, image: "https://placehold.co/400x250/9ACD32/000000?text=Cortinas+Smart", description: "Controla la entrada de luz y la privacidad de tu hogar con cortinas que se abren y cierran automáticamente." },
+
+            // Audio y Video (10 productos)
+            { id: 51, name: "Barra de Sonido con Subwoofer Inalámbrico", category: "Audio y Video", basePrice: 500000, image: "https://placehold.co/400x250/8B0000/FFFFFF?text=Barra+Sonido", description: "Mejora drásticamente el audio de tu TV con esta barra de sonido y subwoofer inalámbrico para graves potentes." },
+            { id: 52, name: "Proyector Portátil Mini LED", category: "Audio y Video", basePrice: 300000, image: "https://placehold.co/400x250/A52A2A/FFFFFF?text=Proyector+Mini", description: "Lleva el cine a cualquier lugar con este proyector compacto, ideal para presentaciones o entretenimiento." },
+            { id: 53, name: "Audífonos Inalámbricos Bluetooth Noise Cancelling", category: "Audio y Video", basePrice: 200000, image: "https://placehold.co/400x250/CD5C5C/FFFFFF?text=Audifonos+BT+NC", description: "Sumérgete en tu música o podcasts sin distracciones, con cancelación activa de ruido y comodidad superior." },
+            { id: 54, name: "Cámara de Acción 4K", category: "Audio y Video", basePrice: 400000, image: "https://placehold.co/400x250/DC143C/FFFFFF?text=Camara+Accion", description: "Captura tus aventuras en impresionante calidad 4K. Resistente y compacta, ideal para deportes y viajes." },
+            { id: 55, name: "Micrófono Condensador USB para Streaming", category: "Audio y Video", basePrice: 120000, image: "https://placehold.co/400x250/B22222/FFFFFF?text=Microfono+USB", description: "Graba audio de calidad profesional para podcasts, streaming o videollamadas con este micrófono USB." },
+            { id: 56, name: "Convertidor HDMI a VGA", category: "Audio y Video", basePrice: 25000, image: "https://placehold.co/400x250/8B4513/FFFFFF?text=HDMI+a+VGA", description: "Conecta dispositivos modernos con HDMI a monitores o proyectores antiguos con entrada VGA." },
+            { id: 57, name: "Smart TV Box Android 4K", category: "Audio y Video", basePrice: 150000, image: "https://placehold.co/400x250/A0522D/FFFFFF?text=Smart+TV+Box", description: "Convierte cualquier televisor en un Smart TV con acceso a miles de aplicaciones y contenido en 4K." },
+            { id: 58, name: "Cable HDMI 2.1 de Alta Velocidad (2 metros)", category: "Audio y Video", basePrice: 30000, image: "https://placehold.co/400x250/D2691E/FFFFFF?text=Cable+HDMI", description: "Disfruta de la máxima calidad de imagen y sonido en 4K/8K con este cable HDMI de alta velocidad." },
+            { id: 59, name: "Sistema de Sonido 5.1 para Cine en Casa", category: "Audio y Video", basePrice: 1200000, image: "https://placehold.co/400x250/FF4500/FFFFFF?text=Sonido+5.1", description: "Transforma tu sala en un cine con este sistema de sonido envolvente 5.1, para una experiencia inmersiva." },
+            { id: 60, name: "Gafas de Realidad Virtual (VR) para Smartphone", category: "Audio y Video", basePrice: 90000, image: "https://placehold.co/400x250/FF8C00/FFFFFF?text=Gafas+VR", description: "Explora mundos virtuales y disfruta de contenido VR con tu smartphone usando estas gafas cómodas." },
+
+            // Accesorios y Gadgets (10 productos)
+            { id: 61, name: "Power Bank 10000 mAh Carga Rápida", category: "Accesorios y Gadgets", basePrice: 60000, image: "https://placehold.co/400x250/48D1CC/000000?text=Power+Bank", description: "Mantén tus dispositivos cargados en todo momento con esta batería portátil de alta capacidad y carga rápida." },
+            { id: 62, name: "Soporte para Laptop Ajustable", category: "Accesorios y Gadgets", basePrice: 40000, image: "https://placehold.co/400x250/40E0D0/000000?text=Soporte+Laptop", description: "Mejora tu postura y la ventilación de tu laptop con este soporte ajustable y plegable." },
+            { id: 63, name: "Kit de Limpieza para Electrónica", category: "Accesorios y Gadgets", basePrice: 20000, image: "https://placehold.co/400x250/00FFFF/000000?text=Kit+Limpieza", description: "Todo lo que necesitas para mantener tus pantallas, teclados y dispositivos impecables." },
+            { id: 64, name: "Organizador de Cables Reutilizable", category: "Accesorios y Gadgets", basePrice: 10000, image: "https://placehold.co/400x250/AFEEEE/000000?text=Organizador+Cables", description: "Mantén tus cables ordenados y evita enredos con este práctico organizador reutilizable." },
+            { id: 65, name: "Hub USB-C Multipuertos", category: "Accesorios y Gadgets", basePrice: 70000, image: "https://placehold.co/400x250/7FFFD4/000000?text=Hub+USB-C", description: "Expande la conectividad de tu laptop con este hub USB-C que incluye puertos USB, HDMI y lector de tarjetas." },
+            { id: 66, name: "Adaptador Universal de Viaje", category: "Accesorios y Gadgets", basePrice: 30000, image: "https://placehold.co/400x250/66CDAA/000000?text=Adaptador+Viaje", description: "Compatible con enchufes de todo el mundo, ideal para tus viajes internacionales." },
+            { id: 67, name: "Luz LED para Monitor (Barra de Luz)", category: "Accesorios y Gadgets", basePrice: 50000, image: "https://placehold.co/400x250/3CB371/000000?text=Luz+Monitor", description: "Ilumina tu espacio de trabajo sin reflejos en la pantalla, ideal para reducir la fatiga visual." },
+            { id: 68, name: "Base de Enfriamiento para Laptop", category: "Accesorios y Gadgets", basePrice: 65000, image: "https://placehold.co/400x250/2E8B57/000000?text=Base+Enfriamiento", description: "Protege tu laptop del sobrecalentamiento y mejora su rendimiento con esta base de enfriamiento." },
+            { id: 69, name: "Kit de Herramientas para Reparación de Electrónica", category: "Accesorios y Gadgets", basePrice: 80000, image: "https://placehold.co/400x250/008000/000000?text=Kit+Herramientas", description: "Un conjunto completo de herramientas de precisión para reparar smartphones, laptops y otros dispositivos electrónicos." },
+            { id: 70, name: "Cargador Rápido USB-C 65W GaN", category: "Accesorios y Gadgets", basePrice: 95000, image: "https://placehold.co/400x250/006400/000000?text=Cargador+GaN", description: "Carga tus dispositivos USB-C (laptops, tablets, smartphones) a máxima velocidad con tecnología GaN." },
+
+            // Seguridad y Protección (10 productos)
+            { id: 71, name: "Candado de Seguridad para Laptop", category: "Seguridad y Protección", basePrice: 25000, image: "https://placehold.co/400x250/808080/FFFFFF?text=Candado+Laptop", description: "Protege tu laptop de robos en espacios públicos con este candado de seguridad resistente." },
+            { id: 72, name: "Filtro de Privacidad para Monitor 24''", category: "Seguridad y Protección", basePrice: 120000, image: "https://placehold.co/400x250/A9A9A9/FFFFFF?text=Filtro+Privacidad", description: "Mantén tu información privada de miradas indiscretas con este filtro de privacidad para monitores." },
+            { id: 73, name: "Protector de Pantalla para Smartphone (Genérico)", category: "Seguridad y Protección", basePrice: 15000, image: "https://placehold.co/400x250/696969/FFFFFF?text=Protector+Pantalla", description: "Protege la pantalla de tu smartphone de rayones y golpes con este protector de alta resistencia." },
+            { id: 74, name: "Funda Protectora para Laptop 15.6''", category: "Seguridad y Protección", basePrice: 30000, image: "https://placehold.co/400x250/708090/FFFFFF?text=Funda+Laptop", description: "Protege tu laptop de golpes y arañazos durante el transporte con esta funda acolchada." },
+            { id: 75, name: "Regleta Supresora de Picos con USB", category: "Seguridad y Protección", basePrice: 45000, image: "https://placehold.co/400x250/778899/FFFFFF?text=Regleta+Supresora", description: "Protege tus dispositivos electrónicos de sobretensiones y picos de energía, con puertos USB de carga." },
+            { id: 76, name: "UPS (Sistema de Alimentación Ininterrumpida) 600VA", category: "Seguridad y Protección", basePrice: 300000, image: "https://placehold.co/400x250/B0C4DE/FFFFFF?text=UPS+600VA", description: "Mantén tus equipos encendidos durante cortes de energía y protégelos de fluctuaciones de voltaje." },
+            { id: 77, name: "Alarma Personal de Seguridad", category: "Seguridad y Protección", basePrice: 20000, image: "https://placehold.co/400x250/C6E2FF/FFFFFF?text=Alarma+Personal", description: "Dispositivo compacto y ruidoso para disuadir a posibles atacantes o pedir ayuda en emergencias." },
+            { id: 78, name: "Mini Cámara Espía Oculta", category: "Seguridad y Protección", basePrice: 70000, image: "https://placehold.co/400x250/ADD8E6/FFFFFF?text=Mini+Camara", description: "Cámara discreta para vigilancia encubierta en el hogar u oficina." },
+            { id: 79, name: "Detector de Monóxido de Carbono Inteligente", category: "Seguridad y Protección", basePrice: 90000, image: "https://placehold.co/400x250/87CEEB/FFFFFF?text=Detector+CO", description: "Protege a tu familia de gases peligrosos con este detector inteligente de monóxido de carbono." },
+            { id: 80, name: "Kit de Primeros Auxilios para Electrónica", category: "Seguridad y Protección", basePrice: 40000, image: "https://placehold.co/400x250/6495ED/FFFFFF?text=Kit+Primeros+Auxilios", description: "Contiene herramientas y materiales básicos para pequeñas reparaciones o emergencias con tus dispositivos." },
+        ];
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const productId = parseInt(getQueryParam('id'));
+            const product = productsData.find(p => p.id === productId); // Find product by ID
+            const productContentDiv = document.getElementById('product-content');
+            const utilityPercentage = 0.30; // 30% utility
+
+            if (product) {
+                const finalPrice = product.basePrice * (1 + utilityPercentage);
+                const formattedPrice = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(finalPrice);
+
+                productContentDiv.innerHTML = `
+                    <div class="text-center mb-8">
+                        <img src="${product.image}" alt="${product.name}" class="product-detail-image" onerror="this.onerror=null;this.src='https://placehold.co/400x250/CCCCCC/000000?text=Imagen+no+disponible';">
+                        <h2 class="text-4xl font-bold text-blue-700 mb-4">${product.name}</h2>
+                        <p class="text-xl text-gray-600 mb-4">Categoría: ${product.category}</p>
+                    </div>
+                    <div class="text-lg text-gray-700 leading-relaxed mb-6">
+                        <p>${product.description}</p>
+                    </div>
+                    <p class="text-3xl font-bold text-green-600 mb-8 text-center">Precio: ${formattedPrice}</p>
+                    <div class="text-center">
+                        <button onclick="history.back();" class="btn-primary inline-block">Volver a Productos</button>
+                    </div>
+                `;
+            } else {
+                productContentDiv.innerHTML = `
+                    <h2 class="text-4xl font-bold text-red-600 mb-6 text-center">Producto no encontrado</h2>
+                    <p class="text-lg text-gray-700 text-center">Lo sentimos, el producto que buscas no está disponible o no existe.</p>
+                    <div class="text-center mt-8">
+                        <button onclick="history.back();" class="btn-primary inline-block">Volver a Productos</button>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

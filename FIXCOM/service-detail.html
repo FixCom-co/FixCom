@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Servicio - FixCom</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .card {
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .image-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section (simple for detail pages) -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 flex items-center justify-between card">
+        <div class="flex items-center space-x-4">
+            <img src="https://placehold.co/100x100/3b82f6/ffffff?text=FixCom" alt="Logo FixCom" class="w-16 h-auto">
+            <h1 class="text-2xl font-bold text-gray-800">FixCom</h1>
+        </div>
+        <!-- Updated button to use history.back() -->
+        <button onclick="history.back();" class="btn-primary">Volver a Inicio</button>
+    </header>
+
+    <!-- Service Detail Section -->
+    <section class="py-16 px-6 md:px-12 bg-white card mt-8 max-w-6xl mx-auto">
+        <div id="service-content">
+            <p class="text-center text-gray-600 text-lg">Cargando detalles del servicio...</p>
+        </div>
+    </section>
+
+    <!-- Footer Section (simple for detail pages) -->
+    <footer class="bg-gray-800 text-white py-8 px-6 md:px-12 mt-8 rounded-t-xl">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-sm">&copy; 2025 FixCom. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Detalles de los servicios
+        const servicesData = {
+            1: {
+                name: "Mantenimiento Preventivo de Computadores a Domicilio",
+                price: 97500,
+                description: "Nuestro servicio de mantenimiento preventivo a domicilio asegura que tu computador funcione de manera óptima. Incluye limpieza interna y externa de componentes, desfragmentación de disco duro (si aplica), optimización del sistema operativo, eliminación de software no deseado, actualización de controladores y un chequeo general de hardware. Agendamos citas flexibles para adaptarnos a tu horario en el norte de Bogotá. ¡Mantén tu equipo rápido y seguro!",
+                images: [
+                    "https://placehold.co/600x400/87CEEB/000000?text=Mantenimiento+PC+1",
+                    "https://placehold.co/600x400/ADD8E6/000000?text=Mantenimiento+PC+2",
+                    "https://placehold.co/600x400/B0E0E6/000000?text=Limpieza+Interna"
+                ]
+            },
+            2: {
+                name: "Cursos Básicos de Sistemas y Cursos de IA",
+                price: 162500,
+                description: "Ofrecemos capacitación personalizada para todos los niveles. Nuestros cursos básicos de sistemas te enseñarán a manejar Windows, Office (Word, Excel, PowerPoint) e internet con confianza. Para los más avanzados, nuestros cursos de Inteligencia Artificial cubren desde los fundamentos del Machine Learning hasta la implementación de Redes Neuronales y el uso de herramientas de IA en la vida diaria. ¡Conviértete en un experto tecnológico con nosotros!",
+                images: [
+                    "https://placehold.co/600x400/90EE90/000000?text=Curso+IA+1",
+                    "https://placehold.co/600x400/98FB98/000000?text=Curso+Sistemas+2",
+                    "https://placehold.co/600x400/ADFF2F/000000?text=Aprendizaje+Tecnologico"
+                ]
+            },
+            3: {
+                name: "Instalación de Redes",
+                price: 130000,
+                description: "Configuramos tu red doméstica o empresarial para garantizar la máxima velocidad y seguridad. Esto incluye la instalación y configuración de routers, extensores de señal, cableado estructurado si es necesario, y la optimización de la cobertura Wi-Fi en todos tus espacios. ¡Conéctate sin interrupciones y protege tu información!",
+                images: [
+                    "https://placehold.co/600x400/FFD700/000000?text=Instalacion+Red+1",
+                    "https://placehold.co/600x400/DAA520/000000?text=Configuracion+Router",
+                    "https://placehold.co/600x400/FFC107/000000?text=Red+Optimizada"
+                ]
+            },
+            4: {
+                name: "Instalación de Smart TV",
+                price: 78000,
+                description: "Nos encargamos de todo para que disfrutes de tu Smart TV. Realizamos el montaje seguro en pared o en su base, la conexión a la red Wi-Fi, la configuración inicial del sistema operativo y la instalación de tus aplicaciones de streaming favoritas (Netflix, YouTube, etc.). ¡Relájate y déjanos la instalación a nosotros!",
+                images: [
+                    "https://placehold.co/600x400/FF6347/000000?text=Instalacion+SmartTV+1",
+                    "https://placehold.co/600x400/FF7F50/000000?text=Montaje+TV",
+                    "https://placehold.co/600x400/FF4500/000000?text=TV+Configurada"
+                ]
+            },
+            5: {
+                name: "Configuración de Hogares Inteligentes",
+                price: 227500,
+                description: "Transforma tu hogar en un espacio moderno y eficiente con nuestras soluciones de domótica. Instalamos y configuramos dispositivos inteligentes como bombillos, enchufes, termostatos, sensores de movimiento y asistentes de voz (Google Home, Alexa). Controla la iluminación, la climatización y la seguridad de tu casa con la comodidad de tu smartphone o tu voz.",
+                images: [
+                    "https://placehold.co/600x400/4682B4/000000?text=Hogar+Inteligente+1",
+                    "https://placehold.co/600x400/5F9EA0/000000?text=Automatizacion+Casa",
+                    "https://placehold.co/600x400/6A5ACD/000000?text=Control+Domotico"
+                ]
+            },
+            6: {
+                name: "Circuito Cerrado de Televisión (CCTV)",
+                price: 390000,
+                description: "Ofrecemos soluciones completas de seguridad y vigilancia para tu hogar o negocio. Incluye la instalación profesional de cámaras de seguridad (interiores y exteriores), configuración de DVRs/NVRs para grabación, y acceso remoto a las imágenes desde tu smartphone o computador. ¡Protege lo que más te importa con un sistema de CCTV confiable!",
+                images: [
+                    "https://placehold.co/600x400/808080/FFFFFF?text=CCTV+Seguridad+1",
+                    "https://placehold.co/600x400/A9A9A9/FFFFFF?text=Camaras+Vigilancia",
+                    "https://placehold.co/600x400/696969/FFFFFF?text=Monitoreo+Remoto"
+                ]
+            },
+            7: {
+                name: "Recuperación de Información",
+                price: 260000,
+                description: "¿Perdiste archivos importantes? Nuestro servicio de recuperación de información te ayuda a restaurar datos de discos duros dañados, USB, tarjetas SD y otras unidades de almacenamiento. Ya sea por borrado accidental, formateo o fallas del dispositivo, haremos todo lo posible para recuperar tu valiosa información.",
+                images: [
+                    "https://placehold.co/600x400/D2B48C/000000?text=Recuperacion+Datos+1",
+                    "https://placehold.co/600x400/DEB887/000000?text=Disco+Duro+Dañado",
+                    "https://placehold.co/600x400/F5DEB3/000000?text=Archivos+Restaurados"
+                ]
+            },
+            8: {
+                name: "Formateo y Montaje de Sistemas Operativos",
+                price: 117000,
+                description: "Realizamos una instalación limpia de tu sistema operativo preferido (Windows, macOS o Linux), eliminando virus, errores y software innecesario. Incluye la configuración inicial, instalación de controladores esenciales y optimización para asegurar que tu equipo funcione de manera rápida y eficiente desde el primer día.",
+                images: [
+                    "https://placehold.co/600x400/B0C4DE/000000?text=Formateo+Windows+1",
+                    "https://placehold.co/600x400/ADD8E6/000000?text=Instalacion+SO",
+                    "https://placehold.co/600x400/87CEEB/000000?text=PC+Optimizada"
+                ]
+            },
+            9: {
+                name: "Repotenciación de PCs (Escritorio y Portátiles)",
+                price: 195000,
+                description: "Dale una nueva vida a tu computador con nuestra repotenciación. Mejoramos el rendimiento de tu PC de escritorio o portátil con la instalación de componentes de última generación como discos SSD, memorias RAM de mayor capacidad, tarjetas gráficas y procesadores. Te asesoramos para elegir las mejores opciones según tus necesidades y presupuesto.",
+                images: [
+                    "https://placehold.co/600x400/778899/FFFFFF?text=Repotenciacion+PC+1",
+                    "https://placehold.co/600x400/B0C4DE/FFFFFF?text=Upgrade+RAM",
+                    "https://placehold.co/600x400/C6E2FF/FFFFFF?text=Instalacion+SSD"
+                ]
+            },
+            10: {
+                name: "Instalación de Sonido de Alta Calidad",
+                price: 143000,
+                description: "Creamos la experiencia de audio perfecta en tu hogar. Instalamos y configuramos sistemas de sonido de alta fidelidad, barras de sonido, sistemas de cine en casa y altavoces multiroom. Disfruta de un sonido envolvente y claro para tus películas, música y juegos favoritos. ¡Déjanos llevar tu experiencia auditiva al siguiente nivel!",
+                images: [
+                    "https://placehold.co/600x400/DDA0DD/000000?text=Sonido+Alta+Calidad+1",
+                    "https://placehold.co/600x400/EE82EE/000000?text=Cine+en+Casa",
+                    "https://placehold.co/600x400/DA70D6/000000?text=Audio+Profesional"
+                ]
+            }
+        };
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const serviceId = parseInt(getQueryParam('id'));
+            const service = servicesData[serviceId];
+            const serviceContentDiv = document.getElementById('service-content');
+
+            if (service) {
+                let imageGalleryHtml = '';
+                if (service.images && service.images.length > 0) {
+                    imageGalleryHtml = `
+                        <div class="image-gallery mb-8">
+                            ${service.images.map(imgSrc => `<img src="${imgSrc}" alt="Imagen de ${service.name}" onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/000000?text=Imagen+no+disponible';">`).join('')}
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2 text-center">
+                            Nota: Las imágenes son representaciones. Pronto podrás ver fotos reales de nuestros servicios.
+                        </p>
+                    `;
+                }
+
+                serviceContentDiv.innerHTML = `
+                    <h2 class="text-4xl font-bold text-blue-700 mb-6 text-center">${service.name}</h2>
+                    ${imageGalleryHtml}
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">${service.description}</p>
+                    <p class="text-3xl font-bold text-green-600 mb-8 text-center">Precio: ${new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(service.price)}</p>
+                    <div class="text-center">
+                        <button onclick="history.back();" class="btn-primary inline-block">Volver a Servicios</button>
+                    </div>
+                `;
+            } else {
+                serviceContentDiv.innerHTML = `
+                    <h2 class="text-4xl font-bold text-red-600 mb-6 text-center">Servicio no encontrado</h2>
+                    <p class="text-lg text-gray-700 text-center">Lo sentimos, el servicio que buscas no está disponible o no existe.</p>
+                    <div class="text-center mt-8">
+                        <button onclick="history.back();" class="btn-primary inline-block">Volver a Servicios</button>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

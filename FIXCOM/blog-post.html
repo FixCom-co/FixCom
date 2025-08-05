@@ -1,0 +1,186 @@
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artículo del Blog - FixCom</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .card {
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+        .blog-content p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+        }
+        .blog-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2563eb;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .blog-content ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section (simple for detail pages) -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 flex items-center justify-between card">
+        <div class="flex items-center space-x-4">
+            <img src="https://placehold.co/100x100/3b82f6/ffffff?text=FixCom" alt="Logo FixCom" class="w-16 h-auto">
+            <h1 class="text-2xl font-bold text-gray-800">FixCom</h1>
+        </div>
+        <!-- Updated button to use history.back() -->
+        <button onclick="history.back();" class="btn-primary">Volver al Blog</button>
+    </header>
+
+    <!-- Blog Post Section -->
+    <section class="py-16 px-6 md:px-12 bg-white card mt-8 max-w-6xl mx-auto">
+        <div id="blog-post-content">
+            <p class="text-center text-gray-600 text-lg">Cargando artículo del blog...</p>
+        </div>
+    </section>
+
+    <!-- Footer Section (simple for detail pages) -->
+    <footer class="bg-gray-800 text-white py-8 px-6 md:px-12 mt-8 rounded-t-xl">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-sm">&copy; 2025 FixCom. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data de artículos del blog
+        const blogPostsData = {
+            1: {
+                title: "5 Consejos para Optimizar el Rendimiento de tu PC",
+                image: "https://placehold.co/600x400/ADD8E6/000000?text=Consejos+PC",
+                content: `
+                    <p>Mantener tu computador rápido y eficiente es clave para una buena productividad. Aquí te dejamos 5 consejos esenciales para optimizar el rendimiento de tu PC:</p>
+                    <h3>1. Elimina archivos temporales y basura</h3>
+                    <p>Con el tiempo, tu sistema acumula archivos temporales, caché de navegador y otros datos innecesarios que pueden ralentizarlo. Utiliza la herramienta de Limpieza de Disco de Windows o aplicaciones de terceros como CCleaner para liberar espacio valioso.</p>
+                    <h3>2. Desfragmenta tu disco duro (si es HDD)</h3>
+                    <p>Si aún utilizas un disco duro mecánico (HDD), la desfragmentación organiza los datos fragmentados, mejorando la velocidad de acceso a los archivos. Para unidades de estado sólido (SSD), esto no es necesario y puede acortar su vida útil.</p>
+                    <h3>3. Gestiona programas de inicio</h3>
+                    <p>Muchas aplicaciones se configuran para iniciarse automáticamente con Windows, consumiendo recursos y ralentizando el arranque. Abre el Administrador de Tareas (Ctrl+Shift+Esc), ve a la pestaña "Inicio" y deshabilita los programas que no necesites que se ejecuten al encender tu PC.</p>
+                    <h3>4. Mantén tu sistema operativo y controladores actualizados</h3>
+                    <p>Las actualizaciones de Windows y los controladores de tus componentes (tarjeta gráfica, sonido, etc.) a menudo incluyen mejoras de rendimiento y seguridad. Asegúrate de instalarlas regularmente.</p>
+                    <h3>5. Utiliza un buen antivirus y realiza escaneos regulares</h3>
+                    <p>El malware puede consumir muchos recursos. Un buen antivirus es esencial para mantener tu PC limpio y rápido.</p>
+                    <p>Siguiendo estos sencillos pasos, notarás una mejora significativa en la velocidad y estabilidad de tu computador. ¡Si necesitas ayuda profesional, no dudes en contactar a FixCom!</p>
+                `
+            },
+            2: {
+                title: "La IA en el Hogar: Tendencias y Futuro",
+                image: "https://placehold.co/600x400/90EE90/000000?text=IA+Hogar",
+                content: `
+                    <p>La Inteligencia Artificial (IA) está revolucionando la forma en que interactuamos con nuestros hogares, haciéndolos más inteligentes, eficientes y cómodos. Lo que antes parecía ciencia ficción, hoy es una realidad tangible.</p>
+                    <h3>Tendencias Actuales en Hogares Inteligentes con IA:</h3>
+                    <ul>
+                        <li><strong>Asistentes de Voz:</strong> Dispositivos como Google Assistant, Amazon Alexa y Apple HomeKit se han vuelto centrales, permitiendo controlar luces, termostatos, sistemas de entretenimiento y más con simples comandos de voz.</li>
+                        <li><strong>Termostatos Inteligentes:</strong> Equipados con IA, aprenden tus preferencias de temperatura, se adaptan a tus horarios y optimizan el consumo de energía, logrando ahorros significativos.</li>
+                        <li><strong>Sistemas de Seguridad Avanzados:</strong> Cámaras con reconocimiento facial, detectores de movimiento que distinguen entre personas y mascotas, y sistemas de alarma que aprenden patrones de comportamiento para identificar amenazas.</li>
+                        <li><strong>Electrodomésticos Conectados:</strong> Desde neveras que sugieren recetas basadas en su contenido hasta lavadoras que optimizan ciclos según el tipo de ropa, la IA los hace más eficientes y convenientes.</li>
+                        <li><strong>Iluminación Adaptativa:</strong> Sistemas de iluminación que ajustan automáticamente el brillo y la temperatura del color según la hora del día, la actividad o incluso tu estado de ánimo.</li>
+                    </ul>
+                    <h3>El Futuro del Hogar con IA:</h3>
+                    <p>En los próximos años, veremos una mayor integración y personalización. Los hogares no solo responderán a comandos, sino que anticiparán nuestras necesidades. La IA permitirá:</p>
+                    <ul>
+                        <li><strong>Mantenimiento Predictivo:</strong> Los sistemas domésticos alertarán sobre posibles fallas antes de que ocurran, programando reparaciones automáticamente.</li>
+                        <li><strong>Salud y Bienestar:</strong> Sensores integrados monitorearán la calidad del aire, patrones de sueño y otros indicadores de salud, ofreciendo recomendaciones personalizadas.</li>
+                        <li><strong>Interacción Natural:</strong> La comunicación con la IA será aún más fluida y contextual, casi como hablar con un miembro más de la familia.</li>
+                        <li><strong>Eficiencia Energética Extrema:</strong> Los hogares se optimizarán para consumir la mínima energía necesaria, adaptándose a las condiciones climáticas y al uso.</li>
+                    </ul>
+                    <p>La IA está transformando nuestros hogares en ecosistemas inteligentes que mejoran nuestra calidad de vida. En FixCom, estamos listos para ayudarte a integrar estas tecnologías en tu hogar.</p>
+                `
+            },
+            3: {
+                title: "Guía Completa de Seguridad para tu Red Wi-Fi",
+                image: "https://placehold.co/600x400/B0E0E6/000000?text=Seguridad+WiFi",
+                content: `
+                    <p>Tu red Wi-Fi es la puerta de entrada a tu vida digital. Protegerla es fundamental para salvaguardar tu privacidad, tus datos y la seguridad de todos tus dispositivos. Sigue esta guía completa para fortalecer la seguridad de tu red inalámbrica:</p>
+                    <h3>1. Cambia el Nombre de Usuario y Contraseña por Defecto de tu Router</h3>
+                    <p>Este es el primer y más importante paso. Las credenciales de fábrica son ampliamente conocidas y un riesgo de seguridad enorme. Accede a la configuración de tu router (generalmente escribiendo 192.168.1.1 o 192.168.0.1 en tu navegador) y cambia el nombre de usuario y la contraseña de administrador.</p>
+                    <h3>2. Utiliza Cifrado WPA2 o WPA3</h3>
+                    <p>Asegúrate de que tu red Wi-Fi esté configurada para usar el cifrado más fuerte disponible. WPA2 es el estándar mínimo recomendado, y WPA3 es el más reciente y seguro. Evita a toda costa WEP y WPA, ya que son vulnerables a ataques.</p>
+                    <h3>3. Crea una Contraseña Fuerte y Única para tu Wi-Fi</h3>
+                    <p>Una contraseña robusta es tu principal defensa. Debe ser larga (mínimo 12-16 caracteres), incluir una combinación de letras mayúsculas y minúsculas, números y símbolos. Evita información personal fácil de adivinar.</p>
+                    <h3>4. Desactiva la Administración Remota</h3>
+                    <p>La administración remota permite acceder a la configuración de tu router desde fuera de tu red doméstica. Si no la necesitas, desactívala para evitar accesos no autorizados.</p>
+                    <h3>5. Mantén el Firmware de tu Router Actualizado</h3>
+                    <p>El firmware es el software interno de tu router. Los fabricantes lanzan actualizaciones que corrigen vulnerabilidades de seguridad y mejoran el rendimiento. Consulta el manual de tu router o el sitio web del fabricante para saber cómo actualizarlo.</p>
+                    <h3>6. Considera una Red de Invitados</h3>
+                    <p>Si tienes visitas frecuentes, habilita una red de invitados. Esto les permite acceder a internet sin tener que darles acceso a tu red principal, donde están tus dispositivos y archivos personales.</p>
+                    <h3>7. Cambia el Nombre de tu Red (SSID)</h3>
+                    <p>Evita usar nombres de red que revelen información personal (tu nombre, dirección). Puedes cambiar el SSID a algo genérico o incluso ocultarlo (aunque esto último no es una medida de seguridad robusta y puede causar problemas de conexión).</p>
+                    <p>Aplicando estas medidas, fortalecerás significativamente la seguridad de tu red Wi-Fi y protegerás tu vida digital. En FixCom, podemos ayudarte con la configuración y optimización de tu red para tu tranquilidad.</p>
+                `
+            }
+        };
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const blogId = parseInt(getQueryParam('id'));
+            console.log("Blog ID from URL:", blogId); // Log para depuración
+            const blogPost = blogPostsData[blogId];
+            console.log("Blog Post Data:", blogPost); // Log para depuración
+            const blogPostContentDiv = document.getElementById('blog-post-content');
+
+            if (blogPost) {
+                blogPostContentDiv.innerHTML = `
+                    <div class="text-center mb-8">
+                        <img src="${blogPost.image}" alt="${blogPost.title}" class="w-full max-w-2xl mx-auto h-64 object-cover rounded-lg shadow-md mb-6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/000000?text=Imagen+no+disponible';">
+                        <h2 class="text-4xl font-bold text-blue-700 mb-4">${blogPost.title}</h2>
+                    </div>
+                    <div class="blog-content text-lg text-gray-700 leading-relaxed">
+                        ${blogPost.content}
+                    </div>
+                    <div class="text-center mt-8">
+                        <button onclick="history.back();" class="btn-primary inline-block">Volver al Blog</button>
+                    </div>
+                `;
+            } else {
+                console.error("Artículo de blog no encontrado para ID:", blogId); // Log de error
+                blogPostContentDiv.innerHTML = `
+                    <h2 class="text-4xl font-bold text-red-600 mb-6 text-center">Artículo no encontrado</h2>
+                    <p class="text-lg text-gray-700 text-center">Lo sentimos, el artículo de blog que buscas no está disponible o no existe.</p>
+                    <div class="text-center mt-8">
+                        <button onclick="history.back();" class="btn-primary inline-block">Volver al Blog</button>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
